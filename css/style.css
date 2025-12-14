@@ -1,0 +1,419 @@
+/* Global Style for Coeur de Lion 90 International website */
+
+/* Root variables allow easy theme customisation */
+:root {
+    /* Palette revisit: the user requested a white and light red theme. We lighten the
+       overall look by using whites and soft reds while maintaining enough
+       contrast for readability. Primary colour is a deep crimson for headings,
+       secondary colour is a warmer light red for buttons and highlights.
+       Backgrounds remain largely white for a clean feel. */
+    --primary-color: #b71c1c;     /* dark crimson for headings and accents */
+    --secondary-color: #e53935;   /* light red used for buttons and call‑to‑actions */
+    --accent-color: #ffe6e6;      /* pale red for subtle section backgrounds */
+    --background-color: #ffffff;  /* white background for generous whitespace */
+    --text-color: #333333;        /* dark grey text for comfortable reading */
+    --light-color: #ffffff;       /* pure white used on cards and footer */
+    --link-hover-color: var(--secondary-color); /* highlight links in red on hover */
+}
+
+/* Reset some basic elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Navigation bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--light-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navbar .logo img {
+    height: 40px;
+    width: auto;
+}
+
+/* Navigation links container.  We hide it on mobile and toggle it via JavaScript. */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+/* Hamburger toggle button used on small screens */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+    height: 24px;
+    width: 30px;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--text-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Transform the lines into a cross when menu is open */
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile layout adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 1rem;
+        display: none;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .navbar {
+        align-items: flex-start;
+    }
+}
+
+/* Hero section */
+.hero {
+    background: url("../images/hero_bg.png") center/cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: var(--light-color);
+}
+
+/* Dark overlay over hero to improve text contrast */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Semi‑transparent overlay tinted with the primary red to enhance contrast on the hero image */
+    background: rgba(183, 28, 28, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--secondary-color);
+    color: var(--light-color);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+}
+
+/* Generic section styling */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.section p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Cards grid */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Footer styling */
+.footer {
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--light-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+    opacity: 0.8;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form input,
+form textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.8rem;
+    background: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: var(--primary-color);
+}
+
+/* Remove the old responsive adjustments for typography and navbar.
+   New responsive rules are defined near the navigation section. */
+
+/* Reveal animation used for scroll interactions */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contact grid styling */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.contact-info h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.contact-info a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-color);
+}
+
+.contact-map iframe {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Donation page */
+.donation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.donation-toggle {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.donation-toggle .toggle {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--secondary-color);
+    background: var(--light-color);
+    color: var(--secondary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.donation-toggle .toggle.active {
+    background: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.amounts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.amount-option {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    background: var(--light-color);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.amount-option input {
+    margin-right: 0.3rem;
+}
+
+.amount-option:hover {
+    border-color: var(--secondary-color);
+}
+
+.donate-btn {
+    margin-top: 1rem;
+}
+
+.donation-note {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    max-width: 600px;
+}
