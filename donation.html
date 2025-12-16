@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cœur de Lion 90 – Faire un don</title>
+    <meta name="description" content="Faites un don pour soutenir les actions de Cœur de Lion 90 en faveur de l'éducation, de la culture, du sport et du développement durable. Paiement sécurisé via PayPal.">
+    <meta name="keywords" content="don, Cœur de Lion 90, association, Belfort, humanitaire, PayPal, soutien, projet">
+    <title>Faire un don – Cœur de Lion 90 International</title>
     <link rel="stylesheet" href="css/style.css">
-    <meta name="description" content="Faites un don pour soutenir les actions de Cœur de Lion 90 en faveur de l’éducation, de la culture, du sport et du développement durable.">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="index.html" class="logo"><img src="images/logo_red.jpg" alt="Logo Cœur de Lion 90">Cœur de Lion 90</a>
+        <a href="index.html" class="logo"><img src="images/logo_green.jpg" alt="Logo Cœur de Lion 90">Cœur de Lion 90</a>
         <div class="menu-toggle">
             <span></span>
             <span></span>
@@ -25,72 +26,154 @@
         </ul>
     </nav>
 
-    <!-- Donation hero section -->
-    <section class="hero" style="background: var(--primary-color);">
+    <!-- Hero Section -->
+    <section class="hero-donation">
         <div class="hero-content">
-            <h1>Faites un don</h1>
-            <p>Votre générosité change des vies. Soutenez nos projets éducatifs, culturels, sportifs et durables.</p>
-            <a href="#donation-form" class="btn">Je fais un don</a>
+            <h1>Soutenez nos actions</h1>
+            <p>Votre générosité change des vies. Chaque don compte pour financer nos projets éducatifs, culturels, sportifs et durables.</p>
         </div>
     </section>
 
-    <!-- Donation content -->
+    <!-- Impact Section -->
     <section class="section reveal active">
-        <h2>Votre don fait la différence</h2>
-        <p>Nous ne pourrions pas mener nos actions sans le soutien des donateurs. Une majorité de personnes préfèrent contribuer en ligne et les pages de dons fidèles à l’image de l’association augmentent considérablement les contributions. En adaptant la couleur, le logo et le style à notre identité, nous créons un environnement de confiance qui incite davantage à donner. Votre don, qu’il soit ponctuel ou mensuel, nous aide à développer nos programmes et à proposer des activités pour tous.</p>
-        <div class="donation-options" id="donation-form">
-            <div class="donation-toggle">
-                <button type="button" class="toggle active" data-type="once">Don ponctuel</button>
-                <button type="button" class="toggle" data-type="monthly">Don mensuel</button>
+        <div class="container">
+            <h2 class="section-title">L'impact de votre don</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">📚</div>
+                    <h3>20 €</h3>
+                    <p>Fournit des fournitures scolaires à un enfant pour une année</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">⚽</div>
+                    <h3>50 €</h3>
+                    <p>Équipe complète un jeune sportif (maillot, ballon, chaussures)</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🏫</div>
+                    <h3>100 €</h3>
+                    <p>Finance une formation professionnelle pour un jeune</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🌿</div>
+                    <h3>200 €</h3>
+                    <p>Soutient un projet de développement durable local</p>
+                </div>
             </div>
-            <div class="amounts">
-                <label class="amount-option"><input type="radio" name="amount" value="10" checked>10 €</label>
-                <label class="amount-option"><input type="radio" name="amount" value="25">25 €</label>
-                <label class="amount-option"><input type="radio" name="amount" value="50">50 €</label>
-                <label class="amount-option"><input type="radio" name="amount" value="100">100 €</label>
-                <label class="amount-option"><input type="radio" name="amount" value="250">250 €</label>
-                <input type="number" name="amountCustom" min="1" placeholder="Montant personnalisé (€)" style="padding:0.5rem; border:1px solid #ddd; border-radius:5px; flex:1;">
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="section reveal donation-section">
+        <div class="container">
+            <h2 class="section-title">Choisissez votre montant</h2>
+            <p class="section-subtitle">Sélectionnez un montant prédéfini ou saisissez le montant de votre choix</p>
+            
+            <div class="donation-form-container">
+                <!-- Montants prédefinis -->
+                <div class="amount-buttons">
+                    <button class="amount-btn" data-amount="10">10 €</button>
+                    <button class="amount-btn" data-amount="20">20 €</button>
+                    <button class="amount-btn" data-amount="50">50 €</button>
+                    <button class="amount-btn" data-amount="100">100 €</button>
+                    <button class="amount-btn" data-amount="200">200 €</button>
+                    <button class="amount-btn custom-amount-btn">Autre montant</button>
+                </div>
+
+                <!-- Montant personnalisé -->
+                <div class="custom-amount-input" id="customAmountContainer" style="display: none;">
+                    <label for="customAmount">Montant personnalisé (€)</label>
+                    <input type="number" id="customAmount" min="1" placeholder="Entrez votre montant">
+                </div>
+
+                <!-- Type de don -->
+                <div class="donation-type">
+                    <h3>Type de don</h3>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="donationType" value="one-time" checked>
+                            <span>Don ponctuel</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="donationType" value="monthly">
+                            <span>Don mensuel</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Montant sélectionné -->
+                <div class="selected-amount" id="selectedAmountDisplay">
+                    <p>Montant sélectionné : <strong id="amountValue">0 €</strong></p>
+                </div>
+
+                <!-- Boutons PayPal -->
+                <div class="paypal-buttons-container">
+                    <div id="paypal-button-container"></div>
+                    <p class="payment-security">
+                        🔒 Paiement 100% sécurisé via PayPal<br>
+                        <small>Vous serez redirigé vers PayPal pour finaliser votre don en toute sécurité.</small>
+                    </p>
+                </div>
+
+                <!-- Autres méthodes -->
+                <div class="alternative-methods">
+                    <h3>Autres méthodes de don</h3>
+                    <div class="method-card">
+                        <h4>🏦 Virement bancaire</h4>
+                        <p><strong>Titulaire :</strong> Cœur de Lion 90 International</p>
+                        <p><strong>IBAN :</strong> FR76 XXXX XXXX XXXX XXXX XXXX XXX</p>
+                        <p><strong>BIC :</strong> XXXXXXXX</p>
+                        <p><small>Veuillez contacter notre équipe pour obtenir les coordonnées bancaires complètes.</small></p>
+                    </div>
+                    <div class="method-card">
+                        <h4>✉️ Chèque</h4>
+                        <p>À l'ordre de : <strong>Cœur de Lion 90 International</strong></p>
+                        <p>À envoyer à :</p>
+                        <address>
+                            Cœur de Lion 90 International<br>
+                            4 rue du Rosemont – appartement 27<br>
+                            90000 Belfort<br>
+                            France
+                        </address>
+                    </div>
+                </div>
             </div>
-            <button type="button" class="btn donate-btn" id="donateButton">Faire un don</button>
-            <p class="donation-note">En cliquant sur « Faire un don », vous serez redirigé vers notre page de paiement sécurisée. Toutes les transactions sont chiffrées et vos données sont protégées. Merci !</p>
+        </div>
+    </section>
+
+    <!-- Tax Deduction Info -->
+    <section class="section reveal tax-info">
+        <div class="container">
+            <h2 class="section-title">🇫🇷 Avantages fiscaux</h2>
+            <div class="tax-box">
+                <p>En tant qu'association loi 1901 à but non lucratif, vos dons à Cœur de Lion 90 peuvent être déductibles de vos impôts.</p>
+                <ul>
+                    <li><strong>Pour les particuliers :</strong> 66% de réduction d'impôt dans la limite de 20% du revenu imposable</li>
+                    <li><strong>Pour les entreprises :</strong> 60% de réduction d'impôt dans la limite de 5‰ du chiffre d'affaires</li>
+                </ul>
+                <p class="tax-example">Exemple : Un don de 100€ ne vous coûte réellement que 34€ après déduction fiscale.</p>
+                <p><small>Un reçu fiscal vous sera automatiquement envoyé par email après votre don.</small></p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Cœur de Lion 90 International. Tous droits réservés.</p>
-        <p>4 rue du Rosemont – appartement 27, 90000 Belfort · France</p>
-        <p>Contact : <a href="mailto:contact@coeurdelion90.org">contact@coeurdelion90.org</a></p>
-        <p>
-            <a href="#">Facebook</a> · <a href="#">Instagram</a> · <a href="#">X/Twitter</a>
+        <p>&copy; 2025 Cœur de Lion 90 International. Tous droits réservés.</p>
+        <p>4 rue du Rosemont – appartement 27, 90000 Belfort · France</p>
+        <p>Contact : <a href="mailto:contact@coeurdelion90.org">contact@coeurdelion90.org</a></p>
+        <p class="social-footer">
+            <a href="https://facebook.com/coeurdelion90" target="_blank" aria-label="Facebook" rel="noopener">Facebook</a> · 
+            <a href="https://instagram.com/coeurdelion90" target="_blank" aria-label="Instagram" rel="noopener">Instagram</a> · 
+            <a href="https://twitter.com/coeurdelion90" target="_blank" aria-label="X/Twitter" rel="noopener">X/Twitter</a>
         </p>
     </footer>
 
-    <!-- JavaScript for interactive elements -->
+    <!-- JavaScript -->
     <script src="js/main.js"></script>
-    <script>
-      // Extra script for donation page toggle and selection
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggles = document.querySelectorAll('.donation-toggle .toggle');
-        const donateButton = document.getElementById('donateButton');
-        toggles.forEach(btn => {
-          btn.addEventListener('click', function () {
-            toggles.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-          });
-        });
-        donateButton.addEventListener('click', function () {
-          const selectedType = document.querySelector('.donation-toggle .toggle.active').getAttribute('data-type');
-          const amountInput = document.querySelector('input[name="amountCustom"]');
-          const checkedRadio = document.querySelector('input[name="amount"]:checked');
-          let amount = amountInput.value ? parseFloat(amountInput.value) : parseFloat(checkedRadio.value);
-          if (!amount || amount <= 0) {
-            alert('Veuillez entrer un montant de don valide.');
-            return;
-          }
-          alert(`Merci pour votre générosité ! Vous avez choisi un don ${selectedType === 'monthly' ? 'mensuel' : 'ponctuel'} de ${amount.toFixed(2)} €.`);
-        });
-      });
-    </script>
+    <script src="js/donation.js"></script>
+    
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=EUR"></script>
 </body>
 </html>
