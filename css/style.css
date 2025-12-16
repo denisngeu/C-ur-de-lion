@@ -1212,3 +1212,177 @@ input:focus, textarea:focus, select:focus {
     .navbar, .footer, .btn { display: none; }
     body { color: #000; background: #fff; }
 }
+
+/* ========================================
+   AMÉLIORATIONS ERGONOMIE ET CLARTÉ
+   ======================================== */
+
+/* Amélioration du contraste et de la lisibilité */
+body {
+    line-height: 1.7; /* Augmenter la hauteur de ligne pour meilleure lisibilité */
+    font-size: 17px; /* Taille de police légèrement augmentée */
+}
+
+/* Navigation améliorée */
+.navbar {
+    padding: 1.2rem 2.5rem; /* Plus d'espacement */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre plus visible */
+}
+
+.nav-links {
+    gap: 2rem; /* Espacement augmenté entre les liens */
+}
+
+.nav-links li a {
+    font-size: 1.05rem; /* Taille de texte augmentée */
+    font-weight: 500; /* Plus de poids pour meilleure lisibilité */
+    padding: 0.5rem 1rem; /* Plus d'espace cliquable */
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    transform: translateY(-2px); /* Léger mouvement au survol */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Hero section - Meilleur contraste */
+.hero-section {
+    position: relative;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Overlay sombre pour meilleur contraste texte */
+    z-index: 1;
+}
+
+.hero-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem; /* Titre plus grand */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Ombre portée pour meilleure lisibilité */
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-section p {
+    font-size: 1.4rem; /* Sous-titre plus grand */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+/* Boutons améliorés */
+.btn, .cta-button {
+    padding: 1rem 2.5rem; /* Plus d'espacement */
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px; /* Coins plus arrondis */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover, .cta-button:hover {
+    transform: translateY(-3px); /* Mouvement au survol */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+}
+
+/* Titres et hiérarchie améliorée */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8; /* Hauteur de ligne augmentée pour paragraphes */
+}
+
+/* Sections avec meilleur espacement */
+.section, .main-content section {
+    padding: 4rem 2rem; /* Plus d'espacement vertical */
+}
+
+/* Cartes et conteneurs */
+.card, .box, .feature {
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover, .box:hover, .feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer amélioré */
+.footer {
+    padding: 3rem 2rem;
+    line-height: 1.8;
+}
+
+.footer a {
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Amélioration du focus pour accessibilité */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Responsive - Meilleure lisibilité sur mobile */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+}
