@@ -3,394 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <title>Cœur de Lion 90 International - Maintenance</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a0000 0%, #4a0000 50%, #8b0000 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Flocons de neige animés */
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1em;
-            animation: fall linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        /* Conteneur principal */
-        .maintenance-container {
-            text-align: center;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            max-width: 800px;
-            z-index: 10;
-            animation: fadeInScale 1s ease-out;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Logo animé */
-        .logo-container {
-            margin-bottom: 30px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .logo-container img {
-            max-width: 150px;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
-        }
-
-        /* Titre principal */
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #ff4444;
-            text-shadow: 2px 2px 10px rgba(255, 68, 68, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 2px 2px 10px rgba(255, 68, 68, 0.5);
-            }
-            to {
-                text-shadow: 2px 2px 20px rgba(255, 68, 68, 1);
-            }
-        }
-
-        /* Icônes de Noël */
-        .christmas-icons {
-            font-size: 2em;
-            margin: 20px 0;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Message */
-        .message {
-            font-size: 1.2em;
-            margin: 30px 0;
-            line-height: 1.6;
-            color: #ffcccc;
-        }
-
-        /* Compte à rebours */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            min-width: 100px;
-            border: 2px solid rgba(255, 68, 68, 0.5);
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .countdown-value {
-            font-size: 3em;
-            font-weight: bold;
-            color: #ff4444;
-            display: block;
-            text-shadow: 0 0 10px rgba(255, 68, 68, 0.8);
-        }
-
-        .countdown-label {
-            font-size: 0.9em;
-            color: #ffcccc;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        /* Hashtag */
-        .hashtag {
-            font-size: 1.3em;
-            margin-top: 40px;
-            color: #ffd700;
-            font-style: italic;
-            animation: slideUp 1s ease-out 0.5s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .heart-icon {
-            color: #ff4444;
-            display: inline-block;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            10%, 30% {
-                transform: scale(1.2);
-            }
-            20%, 40% {
-                transform: scale(1);
-            }
-        }
-
-        /* Étoiles scintillantes */
-        .star {
-            position: absolute;
-            background: #ffd700;
-            width: 2px;
-            height: 2px;
-            border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            .countdown {
-                flex-wrap: wrap;
-            }
-            .countdown-item {
-                min-width: 80px;
-                padding: 15px;
-            }
-            .countdown-value {
-                font-size: 2em;
-            }
-        }
-    
-        /* Easter egg - Message caché */
-        .hidden-message {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 215, 0, 0.95);
-            color: #8b0000;
-            padding: 20px 40px;
-            border-radius: 15px;
-            font-size: 1.2em;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.8s ease-in-out;
-            z-index: 1000;
-            text-align: center;
-            max-width: 90%;
-        }
-
-        .hidden-message.show {
-            opacity: 1;
-        }
-
-        /* Rendre le cœur cliquable */
-        .heart-icon {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .heart-icon:hover {
-            transform: scale(1.3);
-        }
-
-    </style>
+    <title>Cœur de Lion 90 International – Accueil</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
+    <meta name="description" content="Association socio‑éducative, sportive, culturelle et développement durable située à Belfort. Découvrez nos missions, nos objectifs et rejoignez‑nous pour agir avec le cœur.">
 </head>
 <body>
-    <!-- Flocons de neige -->
-    <script>
-        // Création des flocons de neige
-        for (let i = 0; i < 50; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.innerHTML = '❄';
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.animationDuration = (Math.random() * 8 + 4) + 's';
-            snowflake.style.animationDelay = Math.random() * 5 + 's';
-            snowflake.style.fontSize = (Math.random() * 1 + 0.5) + 'em';
-            document.body.appendChild(snowflake);
-        }
-
-        // Création des étoiles
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            document.body.appendChild(star);
-        }
-    </script>
-
-    <div class="maintenance-container">
-        <div class="logo-container">
-            <img src="images/new_logo.jpg" alt="Cœur de Lion 90">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="images/new_logo.jpg" alt="Logo Cœur de Lion 90">Cœur de Lion 90</a>
+        <!-- Hamburger toggle for mobile navigation -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
+        <ul class="nav-links">
+            <li><a href="about.html">Qui sommes nous</a></li>
+            <li><a href="objectives.html">Objectifs</a></li>
+            <li><a href="membership.html">Adhésion</a></li>
+            <li><a href="donation.html">Don</a></li>css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            css css/style.css images images/collage_motto.jpg images/hero_bg.png images/logo_green.jpg images/logo_red.jpg images/new_logo.jpg js js/donation.js js/main.js about.html blog.html CNAME contact.html donation.html index.html membership.html objectives.html README.md
+            
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <div class="christmas-icons">🎄 ✨ 🎅 ✨ 🎄</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Parce que nous le faisons avec le cœur</h1>
+            <p>De tout cœur, pour tout cœur : œuvrons ensemble pour l’éducation, la culture, le sport et le développement durable.</p>
+            <a href="membership.html" class="btn">Rejoindre l’association</a>
+        </div>
+    </section>
 
-        <h1>Site en Maintenance</h1>
+    <!-- About Preview Section -->
+    <section class="section reveal active">
+        <h2>Qui sommes‑nous ?</h2>
+        <p>Cœur de Lion 90 International est une association loi 1901 à but non lucratif, apolitique et laïque, créée à Belfort. Notre vocation est socio‑éducative et sportive, mais aussi culturelle et ouverte aux projets de développement durable. L’association est ouverte à tous sans distinction de nationalité, d’origine ou de race.</p>
+        <p>Notre siège social est situé a Belfort. La durée de vie de l’association est fixée à 99 ans selon nos statuts.</p>
+        <p><a href="about.html" class="btn">En savoir plus</a></p>
+    </section>
 
-        <p class="message">
-            Nous travaillons actuellement à améliorer votre expérience.<br>
-            Le site sera de retour très bientôt !
-        </p>
-
-        <div class="countdown">
-            <div class="countdown-item">
-                <span class="countdown-value" id="hours">00</span>
-                <span class="countdown-label">Heures</span>
+    <!-- Objectives Preview Section -->
+    <section class="section reveal active">
+        <h2>Nos objectifs principaux</h2>
+        <div class="cards">
+            <div class="card reveal active">
+                <h3>Soutenir l’éducation</h3>
+                <p>Nous aidons les personnes en décrochage scolaire grâce à des projets innovants. La transmission des savoirs et l’accompagnement des jeunes sont au cœur de notre mission.</p>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
+            <div class="card reveal active">
+                <h3>Promouvoir la culture et le sport</h3>
+                <p>Par des conférences, expositions, ateliers, compétitions et spectacles, nous contribuons au rayonnement des cultures française, africaine, asiatique et du monde entier.</p>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-value" id="seconds">00</span>
-                <span class="countdown-label">Secondes</span>
+            <div class="card reveal active">
+                <h3>Agir pour l’environnement</h3>
+                <p>Nos actions sensibilisent aux enjeux de l’environnement et du changement climatique. Nous favorisons les initiatives de préservation et de développement durable.</p>
+            </div>
+            <div class="card reveal active">
+                <h3>Encourager l’inclusion</h3>
+                <p>Notre association organise des projets structurants et inclusifs, notamment pour l’insertion professionnelle et l’intégration des personnes en difficulté.</p>
             </div>
         </div>
+        <p style="text-align:center; margin-top:2rem;"><a href="objectives.html" class="btn">Voir tous nos objectifs</a></p>
+    </section>
 
-        <p class="hashtag">
-            <span class="heart-icon">❤️</span>
-            #Tout  Ce  Que  Nous  Faisons  Nous  Le  Faisons  Avec  Le  Cœur
-            <span class="heart-icon">❤️</span>
+    <!-- Membership Call to Action -->
+    <section class="section reveal active" style="background: var(--accent-color);">
+        <h2>Rejoignez‑nous !</h2>
+        <p>Vous souhaitez participer à nos projets et devenir acteur du changement ? L’adhésion à Cœur de Lion 90 est libre et ouverte à toutes et tous. Venez partager vos idées, vos compétences et votre énergie !</p>
+        <p style="text-align:center;">
+            <a href="membership.html" class="btn">En savoir plus sur l’adhésion</a>
         </p>
-    </div>
+    </section>
 
-    <script>
-        // Compte à rebours de 24 heures
-        const endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+    <!-- Donation Call to Action -->
+    <section class="section reveal active" style="background: var(--accent-color);">
+        <h2>Votre générosité compte</h2>
+        <p>En faisant un don, vous nous aidez à financer nos actions en faveur de l’éducation, de la culture, du sport et du développement durable. Chaque euro compte pour construire un avenir meilleur.</p>
+        <p style="text-align:center;">
+            <a href="donation.html" class="btn">Faire un don</a>
+        </p>
+    </section>
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = endTime - now;
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Cœur de Lion 90 International. Tous droits réservés.</p>
+        <p>Contact : <a href="mailto:contact@coeurdelion90.org">contact@coeurdelion90.org</a></p>
+        <p>
+            <a href="#">Facebook</a> · <a href="#">Instagram</a> · <a href="#">X/Twitter</a>
+        </p>
+    </footer>
 
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.querySelector('.countdown').innerHTML = '<p style="font-size: 1.5em; color: #ffd700;">Le site est maintenant disponible !</p>';
-            }
-        }
-
-        updateCountdown();
-        const countdownInterval = setInterval(updateCountdown, 1000);
-
-
-        // Easter egg - Clic sur les cœurs
-        const hearts = document.querySelectorAll('.heart-icon');
-        const secretMessage = document.getElementById('secretMessage');
-        let messageVisible = false;
-
-        hearts.forEach(heart => {
-            heart.addEventListener('click', () => {
-                if (!messageVisible) {
-                    secretMessage.classList.add('show');
-                    messageVisible = true;
-                    setTimeout(() => {
-                        secretMessage.classList.remove('show');
-                        messageVisible = false;
-                    }, 5000);
-                }
-            });
-        });
-
-    </script>
-    <div class="hidden-message" id="secretMessage">
-        ❤️ Le cœur est notre force, l'amour notre mission ❤️
-    </div>
-
+    <!-- JavaScript for interactive elements -->
+    <script src="js/main.js"></script>
 </body>
 </html>
