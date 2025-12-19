@@ -1,0 +1,1388 @@
+/* Global Style for Coeur de Lion 90 International website */
+
+/* Root variables allow easy theme customisation */
+:root {
+    /* Palette revisit: the user requested a white and light red theme. We lighten the
+       overall look by using whites and soft reds while maintaining enough
+       contrast for readability. Primary colour is a deep crimson for headings,
+       secondary colour is a warmer light red for buttons and highlights.
+       Backgrounds remain largely white for a clean feel. */
+    --primary-color: #b71c1c;     /* dark crimson for headings and accents */
+    --secondary-color: #e53935;   /* light red used for buttons and call‑to‑actions */
+    --accent-color: #ffe6e6;      /* pale red for subtle section backgrounds */
+    --background-color: #ffffff;  /* white background for generous whitespace */
+    --text-color: #333333;        /* dark grey text for comfortable reading */
+    --light-color: #ffffff;       /* pure white used on cards and footer */
+    --link-hover-color: var(--secondary-color); /* highlight links in red on hover */
+}
+
+/* Reset some basic elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Navigation bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--light-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navbar .logo img {
+    height: 100px;
+    width: auto;
+}
+
+/* Navigation links container.  We hide it on mobile and toggle it via JavaScript. */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+/* Hamburger toggle button used on small screens */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+    height: 24px;
+    width: 30px;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--text-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Transform the lines into a cross when menu is open */
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile layout adjustments */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 1rem;
+        display: none;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .navbar {
+        align-items: flex-start;
+    }
+}
+
+/* Hero section */
+.hero {
+    background: url("../images/hero_bg.png") center/cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: var(--light-color);
+}
+
+/* Dark overlay over hero to improve text contrast */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Semi‑transparent overlay tinted with the primary red to enhance contrast on the hero image */
+    background: rgba(183, 28, 28, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--secondary-color);
+    color: var(--light-color);
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+}
+
+/* Generic section styling */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.section p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Cards grid */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Footer styling */
+.footer {
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--light-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+    opacity: 0.8;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form input,
+form textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.8rem;
+    background: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: var(--primary-color);
+}
+
+/* Remove the old responsive adjustments for typography and navbar.
+   New responsive rules are defined near the navigation section. */
+
+/* Reveal animation used for scroll interactions */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contact grid styling */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.contact-info h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.contact-info a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-color);
+}
+
+.contact-map iframe {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Donation page */
+.donation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.donation-toggle {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.donation-toggle .toggle {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--secondary-color);
+    background: var(--light-color);
+    color: var(--secondary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.donation-toggle .toggle.active {
+    background: var(--secondary-color);
+    color: var(--light-color);
+}
+
+.amounts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.amount-option {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    background: var(--light-color);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.amount-option input {
+    margin-right: 0.3rem;
+}
+
+.amount-option:hover {
+    border-color: var(--secondary-color);
+}
+
+.donate-btn {
+    margin-top: 1rem;
+}
+
+.donation-note {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    max-width: 600px;
+}
+
+/* Contact Page Improvements */
+
+/* Contact grid layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.contact-info h2 {
+  color: var(--primary-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.contact-info h2:first-of-type {
+  margin-top: 0;
+}
+
+.contact-info address {
+  font-style: normal;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.contact-item {
+  margin: 0.5rem 0;
+  line-height: 1.8;
+}
+
+.btn-link {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.social-links a,
+.social-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover,
+.social-footer a:hover {
+  color: var(--secondary-color);
+}
+
+/* Map container */
+.map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 350px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border: 0;
+}
+
+/* Form improvements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.required {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.form-note {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.form-note.privacy {
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-left: 3px solid var(--primary-color);
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+.btn-submit {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(183, 28, 28, 0.3);
+}
+
+.btn-submit:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+/* Error and success messages */
+.error-message {
+  display: none;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.form-feedback {
+  display: none;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.form-feedback.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-feedback.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .contact-info h2 {
+    font-size: 1.3rem;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    padding: 0.875rem 2rem;
+  }
+}
+
+
+/* ====================
+   DONATION PAGE STYLES
+   ==================== */
+
+/* Hero Donation */
+.hero-donation {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-donation h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.hero-donation p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Impact Cards */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.impact-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.impact-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.impact-card h3 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.impact-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Donation Section */
+.donation-section {
+  background: var(--accent-color);
+}
+
+.donation-form-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Amount Buttons */
+.amount-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.amount-btn {
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.amount-btn:hover {
+  border-color: var(--primary-color);
+  background: #fafafa;
+}
+
+.amount-btn.selected {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.custom-amount-btn {
+  grid-column: span 3;
+  background: var(--accent-color);
+}
+
+/* Custom Amount Input */
+.custom-amount-input {
+  margin: 2rem 0;
+}
+
+.custom-amount-input label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.custom-amount-input input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.custom-amount-input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Donation Type */
+.donation-type {
+  margin: 2rem 0;
+}
+
+.donation-type h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.radio-group {
+  display: flex;
+  gap: 2rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.radio-label input[type="radio"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+
+/* Selected Amount Display */
+.selected-amount {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--accent-color);
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.selected-amount strong {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+/* PayPal Button Container */
+.paypal-buttons-container {
+  margin: 2rem 0;
+}
+
+#paypal-button-container {
+  margin: 2rem 0;
+  min-height: 150px;
+}
+
+.payment-security {
+  text-align: center;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.payment-security small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #999;
+}
+
+/* Alternative Methods */
+.alternative-methods {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 2px solid #eee;
+}
+
+.alternative-methods h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.method-card {
+  background: #f8f8f8;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.method-card h4 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.method-card p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.method-card address {
+  font-style: normal;
+  margin-top: 0.5rem;
+  line-height: 1.8;
+}
+
+/* Tax Info Section */
+.tax-info {
+  background: #f0f7ff;
+}
+
+.tax-box {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.tax-box ul {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.tax-box li {
+  margin: 1rem 0;
+  line-height: 1.8;
+}
+
+.tax-example {
+  background: var(--accent-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-donation h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-donation p {
+    font-size: 1.1rem;
+  }
+  
+  .amount-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .custom-amount-btn {
+    grid-column: span 2;
+  }
+  
+  .radio-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .donation-form-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+    }
+
+    /* ========================================
+   ENHANCED VISUAL IMPROVEMENTS
+   Professional quality level 7400+
+======================================== */
+
+/* Enhanced Hero Sections with Parallax Effect */
+.hero, .hero-donation {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before, .hero-donation::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(183,28,28,0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Enhanced Card Hover Effects */
+.card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(183,28,28,0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.card:hover::after {
+    width: 500px;
+    height: 500px;
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(183,28,28,0.3);
+}
+
+/* Animated Underline for Links */
+a:not(.btn):not(.logo) {
+    position: relative;
+    text-decoration: none;
+}
+
+a:not(.btn):not(.logo)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+a:not(.btn):not(.logo):hover::after {
+    width: 100%;
+}
+
+/* Enhanced Button Styles */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Improved Typography */
+h1, h2, h3 {
+    position: relative;
+    display: inline-block;
+}
+
+h1::after, h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    animation: slideInLeft 0.6s ease-out;
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* Enhanced Navigation */
+.navbar {
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.nav-links a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    width: 100%;
+}
+
+/* Improved Section Transitions */
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Footer */
+.footer {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: var(--light-color);
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+/* Loading Animation */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(183,28,28,0.3); }
+    50% { box-shadow: 0 0 40px rgba(183,28,28,0.6); }
+}
+
+.btn-primary {
+    animation: pulse-glow 2s infinite;
+}
+
+/* Smooth Page Transitions */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced Form Focus States */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(183,28,28,0.1);
+    transform: scale(1.02);
+}
+
+/* Parallax Background Effects */
+.hero-content, .section {
+    transform-style: preserve-3d;
+}
+
+/* Enhanced Impact Cards */
+.impact-card {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+}
+
+.impact-card:hover {
+    transform: translateY(-10px) rotateY(5deg);
+    box-shadow: 0 15px 40px rgba(183,28,28,0.2);
+}
+
+.impact-icon {
+    font-size: 3rem;
+    transition: transform 0.5s ease;
+    display: inline-block;
+}
+
+.impact-card:hover .impact-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Text Gradient Effect for Titles */
+.section-title {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+    h1::after, h2::after {
+        width: 40px;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px) scale(1.01);
+    }
+}
+
+/* Accessibility Enhancements */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus Visible for Keyboard Navigation */
+*:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Enhanced Print Styles */
+@media print {
+    .navbar, .footer, .btn { display: none; }
+    body { color: #000; background: #fff; }
+}
+
+/* ========================================
+   AMÉLIORATIONS ERGONOMIE ET CLARTÉ
+   ======================================== */
+
+/* Amélioration du contraste et de la lisibilité */
+body {
+    line-height: 1.7; /* Augmenter la hauteur de ligne pour meilleure lisibilité */
+    font-size: 17px; /* Taille de police légèrement augmentée */
+}
+
+/* Navigation améliorée */
+.navbar {
+    padding: 1.2rem 2.5rem; /* Plus d'espacement */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombre plus visible */
+}
+
+.nav-links {
+    gap: 2rem; /* Espacement augmenté entre les liens */
+}
+
+.nav-links li a {
+    font-size: 1.05rem; /* Taille de texte augmentée */
+    font-weight: 500; /* Plus de poids pour meilleure lisibilité */
+    padding: 0.5rem 1rem; /* Plus d'espace cliquable */
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    transform: translateY(-2px); /* Léger mouvement au survol */
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Hero section - Meilleur contraste */
+.hero-section {
+    position: relative;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Overlay sombre pour meilleur contraste texte */
+    z-index: 1;
+}
+
+.hero-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem; /* Titre plus grand */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Ombre portée pour meilleure lisibilité */
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-section p {
+    font-size: 1.4rem; /* Sous-titre plus grand */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+/* Boutons améliorés */
+.btn, .cta-button {
+    padding: 1rem 2.5rem; /* Plus d'espacement */
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px; /* Coins plus arrondis */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover, .cta-button:hover {
+    transform: translateY(-3px); /* Mouvement au survol */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+}
+
+/* Titres et hiérarchie améliorée */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8; /* Hauteur de ligne augmentée pour paragraphes */
+}
+
+/* Sections avec meilleur espacement */
+.section, .main-content section {
+    padding: 4rem 2rem; /* Plus d'espacement vertical */
+}
+
+/* Cartes et conteneurs */
+.card, .box, .feature {
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover, .box:hover, .feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer amélioré */
+.footer {
+    padding: 3rem 2rem;
+    line-height: 1.8;
+}
+
+.footer a {
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Amélioration du focus pour accessibilité */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Responsive - Meilleure lisibilité sur mobile */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+}
