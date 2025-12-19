@@ -57,6 +57,9 @@ body {
 .navbar .logo img {
     height: 100px;
     width: auto;
+        border-radius: 50%; /* Rend le logo circulaire */
+    object-fit: cover; /* Assure un bon rendu de l'image */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); /* Effet estompe dore */
 }
 
 /* Navigation links container.  We hide it on mobile and toggle it via JavaScript. */
