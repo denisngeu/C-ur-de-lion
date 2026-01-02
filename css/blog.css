@@ -1,0 +1,20 @@
+
+
+.cdl-article{max-width:900px;margin:0 auto;padding:16px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+.cdl-hero{padding:8px 0 16px;border-bottom:1px solid #e6e6e6}
+.cdl-lead{font-size:1.05rem;color:#222;margin:8px 0 12px}
+.cdl-section{padding:16px 0}
+.cdl-list{padding-left:18px}
+.cdl-figure{margin:16px 0}
+.cdl-img{width:100%;height:auto;display:block;border-radius:12px}
+.cdl-figure figcaption{font-size:.95rem;color:#555;margin-top:8px}
+.cdl-impact{border:1px solid #e6e6e6;border-radius:12px;padding:12px 14px;background:#fafafa}
+.cdl-impact h3{margin:0 0 8px;font-size:1.05rem}
+.cdl-cta{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.cdl-btn{display:inline-block;padding:12px 14px;border-radius:12px;text-decoration:none;font-weight:700}
+.cdl-btn--primary{background:#157347;color:#fff}
+.cdl-btn--primary:hover{filter:brightness(.95)}
+.cdl-btn--secondary{background:#fff;color:#157347;border:2px solid #157347}
+.cdl-btn--secondary:hover{background:#f3fff8}
+.cdl-links a{word-break:break-word}
+

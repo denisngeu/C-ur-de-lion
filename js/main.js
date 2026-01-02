@@ -340,5 +340,5 @@ window.addEventListener('load', () => {
 
 // Console Message
 console.log('%c🦁 Cœur de Lion 90 International', 'color: #b71c1c; font-size: 20px; font-weight: bold;');
-console.log('%cSite développé avec ❤️ pour une qualité professionnelle niveau 7400+', 'color: #e53935; font-size: 14px;');
+console.log('%cSite développé avec ❤️ par Gls Studio', 'color: #e53935; font-size: 14px;');
 
